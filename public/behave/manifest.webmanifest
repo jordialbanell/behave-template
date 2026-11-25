@@ -1,0 +1,15 @@
+{
+  "name": "Behave",
+  "short_name": "Behave",
+  "description": "A small city that grows or stalls with how you actually live.",
+  "start_url": "/projects/behave",
+  "scope": "/projects/behave",
+  "display": "standalone",
+  "background_color": "#f5f1ea",
+  "theme_color": "#f5f1ea",
+  "icons": [
+    { "src": "/behave/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/behave/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/behave/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

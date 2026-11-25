@@ -1,0 +1,87 @@
+/* Behave: one chat, the site's warm paper palette, the city's dusk blue as the one accent. */
+.bh {
+  --bh-accent: #2f5d8a;
+  --bh-accent-tint: #e4ebf2;
+  --bh-card: #fffdf9;
+  --bh-bad: #a8432f;
+  height: 100%;
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+.bh a { color: var(--ink); }
+
+.bh-page { height: 100%; max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; }
+.bh-main { max-width: 1080px; margin: 0 auto; padding: 24px 16px 64px; }
+
+.bh-h1 { font-family: var(--font-serif), Georgia, serif; font-size: 36px; font-weight: 400; margin: 12px 0 8px; }
+.bh-lead { font-size: 16px; line-height: 1.55; max-width: 560px; margin: 0 0 12px; }
+.bh-muted { color: var(--muted); }
+.bh-strong { font-weight: 600; }
+.bh-empty { padding: 48px 16px; color: var(--muted); text-align: center; }
+.bh-err { margin-top: 8px; font-size: 12px; }
+.bh-outside { max-width: 600px; margin: 32px auto; padding: 0 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.bh-link { background: none; border: 0; padding: 0; color: var(--soft-ink); text-decoration: underline; font-size: 13px; cursor: pointer; min-height: 32px; display: inline-flex; align-items: center; }
+
+/* the whole app: strip on top, chat in the middle, composer at the bottom */
+.bh-shell { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+
+.bh-strip { padding: 10px 16px 12px; border-bottom: 1px solid var(--line); background: var(--bh-card); }
+.bh-strip-top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+.bh-strip-links { display: flex; gap: 14px; }
+.bh-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 6px; }
+.bh-stat { background: var(--bg); border-radius: 10px; padding: 6px 8px; }
+.bh-stat-name { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.bh-stat-value { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bh-stat.is-empty .bh-stat-value { color: var(--ghost); font-weight: 400; }
+
+.bh-week { max-height: 40%; overflow: auto; padding: 4px 16px 10px; border-bottom: 1px solid var(--line); background: var(--bh-card); }
+.bh-table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+.bh-table th { text-align: left; font-size: 11px; font-weight: 500; color: var(--muted); padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.bh-table td { padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+
+.bh-chat-list { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding: 16px; }
+.bh-hello { margin: auto; max-width: 340px; text-align: center; color: var(--soft-ink); font-size: 15px; line-height: 1.5; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.bh-row { display: flex; gap: 8px; align-items: flex-end; }
+.bh-row.is-me { justify-content: flex-end; }
+.bh-bubble-wrap { display: flex; flex-direction: column; gap: 4px; max-width: 80%; min-width: 0; }
+.bh-row.is-me .bh-bubble-wrap { align-items: flex-end; }
+.bh-msg { padding: 9px 13px; border-radius: 18px; font-size: 15px; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+.is-mayor .bh-msg { background: var(--bh-accent-tint); border-bottom-left-radius: 6px; }
+.is-me .bh-msg { background: var(--ink); color: var(--key); border-bottom-right-radius: 6px; }
+.bh-msg.is-typing { display: flex; gap: 4px; padding: 13px; }
+.bh-msg.is-typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--bh-accent); opacity: 0.4; animation: bh-dot 1s infinite; }
+.bh-msg.is-typing span:nth-child(2) { animation-delay: 0.15s; }
+.bh-msg.is-typing span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes bh-dot { 50% { opacity: 1; } }
+.bh-photo { width: 180px; max-width: 100%; max-height: 220px; object-fit: cover; border-radius: 14px; border: 1px solid var(--line); display: block; }
+.bh-photo-chip { font-size: 12px; color: var(--soft-ink); background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+.bh-logged { font-size: 12px; color: var(--bh-accent); padding-left: 4px; }
+
+.bh-error { margin: 0 16px 8px; font-size: 13px; color: var(--bh-bad); }
+
+.bh-composer { padding: 8px 12px calc(10px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--bh-card); }
+.bh-composer-row { display: flex; align-items: flex-end; gap: 8px; }
+.bh-composer-row textarea {
+  flex: 1; min-width: 0; min-height: 42px; max-height: 150px; padding: 10px 14px; border-radius: 21px; border: 1px solid var(--line);
+  background: #fff; color: var(--ink); font-size: 16px; line-height: 1.35; font-family: inherit; resize: none; overflow-y: auto;
+  box-sizing: border-box; display: block;
+}
+.bh-icon-btn {
+  flex: none; width: 42px; height: 42px; border-radius: 50%; border: 0; background: transparent; color: var(--soft-ink);
+  display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.bh-icon-btn.is-send { background: var(--ink); color: var(--key); }
+.bh-icon-btn:disabled { opacity: 0.35; cursor: default; }
+.bh-pending { position: relative; width: 64px; margin: 0 0 8px 50px; }
+.bh-pending img { width: 64px; height: 64px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); display: block; }
+.bh-pending button {
+  position: absolute; top: -6px; right: -6px; width: 22px; height: 22px; border-radius: 50%; border: 0;
+  background: var(--ink); color: var(--key); display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+}
+
+/* setup page */
+.bh-doc { max-width: 720px; font-size: 15px; line-height: 1.6; }
+.bh-doc h2 { font-family: var(--font-serif), Georgia, serif; font-size: 22px; font-weight: 400; margin: 28px 0 8px; }
+.bh-doc code, .bh-doc pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+.bh-doc pre { background: var(--bh-card); border: 1px solid var(--line); border-radius: 10px; padding: 12px; overflow-x: auto; }
+.bh-doc li { margin: 4px 0; }
